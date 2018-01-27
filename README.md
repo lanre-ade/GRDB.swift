@@ -5,7 +5,7 @@ GRDB 2 [![Swift](https://img.shields.io/badge/swift-4-orange.svg?style=flat)](ht
 
 **Latest release**: January 29, 2018 • version 2.8.0 • [CHANGELOG](CHANGELOG.md)
 
-**Requirements**: iOS 8.0+ / OSX 10.9+ / watchOS 2.0+ &bull; Swift 4.0 / Xcode 9+
+**Requirements**: iOS 8.0+ / OSX 10.9+ / watchOS 2.0+ &bull; Swift 4+ / Xcode 9+
 
 | Swift version | GRDB version                                                |
 | ------------- | ----------------------------------------------------------- |
@@ -662,7 +662,7 @@ Date.fetchCursor(...)   // DatabaseValueCursor<Date>
 Player.fetchCursor(...) // RecordCursor<Player>
 ```
 
-All cursor types adopt the [Cursor](http://groue.github.io/GRDB.swift/docs/2.8/Protocols/Cursor.html) protocol, which looks a lot like standard [lazy sequences](https://developer.apple.com/reference/swift/lazysequenceprotocol) of Swift. As such, cursors come with many convenience methods: `contains`, `dropFirst`, `dropLast`, `drop(while:)`, `enumerated`, `filter`, `first`, `flatMap`, `forEach`, `joined`, `joined(separator:)`, `max`, `max(by:)`, `min`, `min(by:)`, `map`, `prefix`, `prefix(while:)`, `reduce`, `reduce(into:)`, `suffix`:
+All cursor types adopt the [Cursor](http://groue.github.io/GRDB.swift/docs/2.8/Protocols/Cursor.html) protocol, which looks a lot like standard [lazy sequences](https://developer.apple.com/reference/swift/lazysequenceprotocol) of Swift. As such, cursors come with many convenience methods: `compactMap`, `contains`, `dropFirst`, `dropLast`, `drop(while:)`, `enumerated`, `filter`, `first`, `flatMap`, `forEach`, `joined`, `joined(separator:)`, `max`, `max(by:)`, `min`, `min(by:)`, `map`, `prefix`, `prefix(while:)`, `reduce`, `reduce(into:)`, `suffix`:
 
 ```swift
 // Iterate all Github links
@@ -1496,7 +1496,7 @@ When you don't provide any explicit *argumentCount*, the function can take any n
 
 ```swift
 let averageOf = DatabaseFunction("averageOf", pure: true) { (values: [DatabaseValue]) in
-    let doubles = values.flatMap { Double.fromDatabaseValue($0) }
+    let doubles = values.compactMap { Double.fromDatabaseValue($0) }
     return doubles.reduce(0, +) / Double(doubles.count)
 }
 dbQueue.add(function: averageOf)
