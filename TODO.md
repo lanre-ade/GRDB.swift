@@ -11,6 +11,10 @@
     - [ ] CASE x WHEN w1 THEN r1 WHEN w2 THEN r2 ELSE r3 END https://www.sqlite.org/lang_expr.html
 - [ ] Write regression tests for #156 and #157
 
+Xcode 9.3, Swift 4.1
+
+- [ ] Audit Cursor return types and make it look as much as possible as stdlib's lazy sequence
+
 GRDB 3.0
 
 - [ ] Hide useless scheduling methods behind protocols : https://forums.swift.org/t/discouraging-protocol-methods-on-concrete-values/8737/4?u=gwendal.roue
