@@ -829,11 +829,14 @@ extension Database {
             self.rawValue = rawValue
         }
         
+        #if swift(>=4.1)
+        #else
         /// The hash value
         /// :nodoc:
         public var hashValue: Int {
             return rawValue.hashValue
         }
+        #endif
         
         /// The `BINARY` built-in SQL collation
         public static let binary = CollationName("BINARY")
@@ -866,11 +869,14 @@ extension Database {
             self.rawValue = rawValue
         }
         
+        #if swift(>=4.1)
+        #else
         /// The hash value
         /// :nodoc:
         public var hashValue: Int {
             return rawValue.hashValue
         }
+        #endif
         
         /// The `TEXT` SQL column type
         public static let text = ColumnType("TEXT")
